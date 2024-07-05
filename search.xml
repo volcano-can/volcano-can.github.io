@@ -3,7 +3,7 @@
   <entry>
     <title>电子技术实习期末复习</title>
     <url>/2024/07/05/%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E4%B9%A0%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="树莓派期末复习"><a href="#树莓派期末复习" class="headerlink" title="树莓派期末复习"></a>树莓派期末复习</h1><h2 id="1-1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）"><a href="#1-1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）" class="headerlink" title="1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）"></a>1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）</h2><h3 id="1-1-1-树莓派硬件结构"><a href="#1-1-1-树莓派硬件结构" class="headerlink" title="1.1.1 树莓派硬件结构"></a>1.1.1 树莓派硬件结构</h3><p><img  
+    <content><![CDATA[<h2 id="1-1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）"><a href="#1-1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）" class="headerlink" title="1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）"></a>1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）</h2><h3 id="1-1-1-树莓派硬件结构"><a href="#1-1-1-树莓派硬件结构" class="headerlink" title="1.1.1 树莓派硬件结构"></a>1.1.1 树莓派硬件结构</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://postimage.me/images/2024/07/05/image-20240624171201779-1719220324314-31-1719220328125-33---.png"
@@ -1072,10 +1072,5 @@ if __name__ == &quot;__main__&quot;:
         <tag>ustb</tag>
         <tag>课程期末</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2024/07/05/test/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>

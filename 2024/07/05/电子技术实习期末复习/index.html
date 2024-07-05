@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Volcano">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://volcano-can.space/2024/07/05/电子技术实习期末复习/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="树莓派期末复习1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）1.1.1 树莓派硬件结构  1.1.2 GPIOGPIO 口通用输入输出端口的简称，PIN 脚依照考量可作为通用输入（GPI）或通用输出 （GPO）或者通用输入输出（GPIO） 1.1.3 PWM概念和调制（LED灯、无源蜂鸣器） 脉冲宽度调制(PWM)，是英文“Pulse Wid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子技术实习期末复习">
+<meta property="og:url" content="http://volcano-can.space/2024/07/05/%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E4%B9%A0%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="树莓派期末复习1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）1.1.1 树莓派硬件结构  1.1.2 GPIOGPIO 口通用输入输出端口的简称，PIN 脚依照考量可作为通用输入（GPI）或通用输出 （GPO）或者通用输入输出（GPIO） 1.1.3 PWM概念和调制（LED灯、无源蜂鸣器） 脉冲宽度调制(PWM)，是英文“Pulse Wid">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624171201779-1719220324314-31-1719220328125-33---.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/48f03e67277f3393d862ae5779d0418-1719234793775-40.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624173644416-1719221807075-35.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623214019709.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623214150785.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623225058839-1719154262669-1---.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623225318926-1719154402157-3.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623225347328-1719154429841-5.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623225456347-1719154499102-7.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623225801982-1719154684548-9.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623225820090-1719154703092-11.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623230351276-1719155033962-13.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623231152552-1719155515275-17.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623232331853-1719156214344-21.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623232633399-1719156395574-23.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240623232933969-1719156576419-25.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624155232296-1719215554823-7.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624155404741-1719215647868-9.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624155441952-1719215684330-11.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624160705151-1719216427711-13.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624170011793-1719219614589-25.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624163905923-1719218348201-17.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624163947527-1719218390508-19.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624164054516-1719218457053-21.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624213700056-1719236223513-42.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624215513392-1719237315915-44.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240624222433110-1719239076851-48.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625150349712-1719299031920-11.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625151817812-1719299899896-17.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625152147017-1719300109455-19.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625153030509-1719300633215-21.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625153107908-1719300670416-23.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625153307349-1719300789737-25.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625195059307-1719316262054-37.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625200952227-1719317394408-39.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625140645654-1719295609258-1.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625144638108-1719298000606-3.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625144724207-1719298046168-5.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625154508529-1719301510579-27.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625154929455-1719301771434-29.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625154937744-1719301779724-31.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625155148025.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625155651713-1719302214458-33.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625202549457-1719318352025-41.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625202855296-1719318537885-43.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625151412557-1719299654694-13.png">
+<meta property="og:image" content="https://postimage.me/images/2024/07/05/image-20240625151512265-1719299714979-15.png">
+<meta property="article:published_time" content="2024-07-05T07:37:22.000Z">
+<meta property="article:modified_time" content="2024-07-05T07:47:47.152Z">
+<meta property="article:author" content="Volcano">
+<meta property="article:tag" content="ustb">
+<meta property="article:tag" content="课程期末">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://postimage.me/images/2024/07/05/image-20240624171201779-1719220324314-31-1719220328125-33---.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/avt.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/avt.jpg">
+    <meta name="theme-color" content="#336699">
+    <link rel="shortcut icon" href="/images/avt.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            电子技术实习期末复习 -
+        
+        Volcano
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"volcano-can.space","root":"/","language":"en","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"25px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"center","headings_top_spacing":{"h1":"5.5rem","h2":"4.5rem","h3":"3.5rem","h4":"3.0rem","h5":"2.7rem","h6":"2.2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":100,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#336699","secondary":"8BC5E2","default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1250px","sidebar_width":"550px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/cat.png","dark":"/images/wallpaper_dark.png"},"title":"Volcano's Blog","subtitle":{"text":["一切都是最好的安排 ಣ "],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#a5dee5","dark":"#d1d1b6"},"text_style":{"title_size":"3.8rem","subtitle_size":"1.8rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/volcano-can","instagram":null,"zhihu":null,"twitter":null,"email":"zhangcan66_22@qq.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.3","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Status":{"path":"none","icon":"fa-regular fa-chart-bar"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/volcan-can","Email":"zhangcan66_2022@qq.com","Friends":"/friends"}},"Links":{"icon":"fa-regular fa-link","submenus":{"Link1":"/link1","Link2":"/link2","Link3":"/link3"}}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"right","first_item":"menu","announcement":"你是谁？","show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/3/22 22:07:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        Volcano
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i,
+            }).add({
+                targets: '.ml13 .letter',
+                translateY: [0,-40],
+                opacity: [1,0],
+                filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
+                easing: "easeInExpo",
+                duration: 1200,
+                delay: (el, i) => 100 + 30 * i,
+                complete: function() {
+                    hidePreloader(); // Call hidePreloader after the animation completes
+                }
+            });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Volcano
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    ME
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/volcan-can">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/zhangcan66_2022@qq.com">
+                                                    EMAIL
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/friends">
+                                                    FRIENDS
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    LINKS
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/link1">
+                                                    LINK1
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/link2">
+                                                    LINK2
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/link3">
+                                                    LINK3
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">ME</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/volcan-can">GITHUB</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/zhangcan66_2022@qq.com">EMAIL</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/friends">FRIENDS</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Links"
+                        >
+                            <span>
+                                LINKS
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Links">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/link1">LINK1</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/link2">LINK2</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/link3">LINK3</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                
+                
+                <img src="https://postimage.me/images/2024/07/05/image-20240624170549480-1719219952213-29.png" alt="电子技术实习期末复习" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-center">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">电子技术实习期末复习</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/avt.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Volcano</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-07-05 15:37:22</span>
+        <span class="mobile">2024-07-05 15:37:22</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-07-05 15:47:47</span>
+            <span class="mobile">2024-07-05 15:47:47</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/ustb-learning/">ustb learning</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ustb/">ustb</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%AF%BE%E7%A8%8B%E6%9C%9F%E6%9C%AB/">课程期末</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>13.9k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>52 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="树莓派期末复习"><a href="#树莓派期末复习" class="headerlink" title="树莓派期末复习"></a>树莓派期末复习</h1><h2 id="1-1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）"><a href="#1-1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）" class="headerlink" title="1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）"></a>1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）</h2><h3 id="1-1-1-树莓派硬件结构"><a href="#1-1-1-树莓派硬件结构" class="headerlink" title="1.1.1 树莓派硬件结构"></a>1.1.1 树莓派硬件结构</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624171201779-1719220324314-31-1719220328125-33---.png"
+                      alt="image 20240624171201779 1719220324314 31 1719220328125 33 副本"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/48f03e67277f3393d862ae5779d0418-1719234793775-40.png"
+                      alt="48f03e67277f3393d862ae5779d0418 1719234793775 40"
+                ></p>
+<h3 id="1-1-2-GPIO"><a href="#1-1-2-GPIO" class="headerlink" title="1.1.2 GPIO"></a>1.1.2 GPIO</h3><p>GPIO 口<strong>通用输入输出端口</strong>的简称，PIN 脚依照考量可作为通用输入（GPI）或通用输出</p>
+<p>（GPO）或者通用输入输出（GPIO）</p>
+<h3 id="1-1-3-PWM概念和调制（LED灯、无源蜂鸣器）"><a href="#1-1-3-PWM概念和调制（LED灯、无源蜂鸣器）" class="headerlink" title="1.1.3 PWM概念和调制（LED灯、无源蜂鸣器）"></a>1.1.3 PWM概念和调制（LED灯、无源蜂鸣器）</h3><p> <strong>脉冲宽度调制</strong>(PWM)，是英文“Pulse Width Modulation”的缩写，简称脉宽调制。</p>
+<ol>
+<li><p>pwm的频率：</p>
+<p>是指1秒钟内信号从高电平到低电平再回到高电平的次数(一个周期)；</p>
+<p>也就是说一秒钟PWM有多少个周期<br>单位： Hz<br>表示方式： 50Hz 100Hz</p>
+</li>
+<li><p>pwm的周期：</p>
+<p>T&#x3D;1&#x2F;f<br>周期&#x3D;1&#x2F;频率<br>50Hz &#x3D; 20ms 一个周期</p>
+<p>如果频率为50Hz ，也就是说一个周期是20ms 那么一秒钟就有 50次PWM周期</p>
+</li>
+<li><p>占空比：<br>是一个脉冲周期内，高电平的时间与整个周期时间的比例。<br>单位： % (0%-100%)<br>表示方式：20%<br>即脉宽时间占总周期时间的比例。</p>
+<p>PWM就是在合适的信号频率下，通过一个周期里改变占空比的方式来改变输出的有效电压。</p>
+</li>
+</ol>
+<p><strong>PWM：</strong></p>
+<p>脉宽调制(PWM)是指用微处理器的数字输出来对模拟电路进行控制，是一种对模拟信号电平进行数字编码的方法。在树莓派上，可以通过对GPIO的编程来实现PWM。</p>
+<p>1、创建一个 PWM 实例：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = GPIO.PWM(channel, frequency)</span><br></pre></td></tr></table></figure></div>
+
+<p>2、启用 PWM：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.start(dc) # dc 代表占空比（范围：0.0 &lt;= dc &gt;= 100.0）</span><br></pre></td></tr></table></figure></div>
+
+<p>3、更改频率：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.ChangeFrequency(freq) # freq 为设置的新频率，单位为 Hz</span><br></pre></td></tr></table></figure></div>
+
+<p>4、更改占空比：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.ChangeDutyCycle(dc) # 范围：0.0 &lt;= dc &gt;= 100.0</span><br></pre></td></tr></table></figure></div>
+
+<p>5、停止 PWM：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.stop()</span><br></pre></td></tr></table></figure></div>
+
+<p>LED灯通过更改改变占空比的方式，表现不同颜色</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624173644416-1719221807075-35.png"
+                      alt="image 20240624173644416 1719221807075 35"
+                ></p>
+<p>无源蜂鸣器通过更改频率的方式，表现不同音调</p>
+<h3 id="1-1-4-I2C"><a href="#1-1-4-I2C" class="headerlink" title="1.1.4 I2C"></a>1.1.4 I2C</h3><p><strong>定义</strong>：IIC（又称I2C，Inter-Integrated Circuit），即集成电路总线，是一种<strong>两线式串行总线</strong>，由PHILIPS公司开发，用于连接微控制器及其外围设备。多用于主机和从机在数据量不大且传输距离短的场合下的<strong>主从通信</strong>。I2C总线由数据线SDA和时钟线SCL构成通信线路，既可用于发送数据，也可接收数据，是一种半双工通信协议。总线上的主设备与从设备之间以字节(8位)为单位进行双向的数据传输。</p>
+<p>I2C总线需要两根线来实现连接于总线上的器件之间的信息传输，一根是<strong>SDA（Serial Data）串行数据线</strong>，另一根是<strong>SCL（Serial Clock）串行时钟线</strong>。</p>
+<p>1、空闲状态</p>
+<p>I2C总线的SDA和SCL两条信号线<strong>同时处于高电平</strong>时，规定为总线的空闲状态。</p>
+<p>2、开始信号</p>
+<p>在<strong>SCL保持高</strong>电平期间，<strong>SDA的电平被拉低</strong>，称为I2C总线总线的起始信号，标志着一次数据传输开始。</p>
+<p>3、停止信号</p>
+<p>在<strong>SCL保持高</strong>电平期间，<strong>SDA被释放，返回高电平</strong>，称为I2C总线的停止信号，标志着一次数据传输的终止。</p>
+<p><strong>数据传输</strong>：</p>
+<p>在I2C总线上传送的每一位数据都有一个时钟脉冲相对应（或同步控制)，即在SCL串行时钟的配合下，在 SDA上<strong>逐位地串行传送</strong>每一位数据。除了开始和停止，IIC总线要遵循<strong>：SCL为低电平的时候，数据才能变化；SCL为高电平的时候，数据必须保持稳定。</strong></p>
+<p><strong>为什么SDA在SCL低电平期间才允许改变状态？</strong></p>
+<p>因为当SCL处于高电平状态时，SDA拉低表示的是起始位，拉高表示的是停止位，所以当数据位中0和1出现时，如果在SCL高电平状态下SDA状态变化的话，就无法区分数据和起始、停止位。</p>
+<h2 id="1-2-树莓派系统配置及远程登录的方法，树莓派系统实验过程中遇到的一些常见命令：如切换到用户目录，进入文件编辑器，安装软件，重启、关机等。"><a href="#1-2-树莓派系统配置及远程登录的方法，树莓派系统实验过程中遇到的一些常见命令：如切换到用户目录，进入文件编辑器，安装软件，重启、关机等。" class="headerlink" title="1.2 树莓派系统配置及远程登录的方法，树莓派系统实验过程中遇到的一些常见命令：如切换到用户目录，进入文件编辑器，安装软件，重启、关机等。"></a>1.2 树莓派系统配置及远程登录的方法，树莓派系统实验过程中遇到的一些常见命令：如切换到用户目录，进入文件编辑器，安装软件，重启、关机等。</h2><h3 id="1-2-1树莓派系统配置及远程登录的方法"><a href="#1-2-1树莓派系统配置及远程登录的方法" class="headerlink" title="1.2.1树莓派系统配置及远程登录的方法"></a>1.2.1树莓派系统配置及远程登录的方法</h3><p>4.配置VNC</p>
+<ul>
+<li>安装VNC-Viewer，输入树莓派IP地址，回车，点击continue</li>
+<li>输入树莓派的账号密码，点击OK，实现无屏幕无线VNC开启树莓派</li>
+</ul>
+<p>3.配置SSH</p>
+<ul>
+<li>首先要确保电脑和树莓派连接到同一个wifi</li>
+<li>查看电脑IP地址</li>
+<li>使用Advanced IP Scanner软件查找到自己树莓派的IP地址</li>
+<li>打开putty.exe，使用SSH远程登录树莓派</li>
+<li>输入树莓派的账号：pi，密码：raspberry</li>
+<li>输入命令sudo raspi-config，回车</li>
+<li>在选项“Interfacing Options…”中使能VNC，退出菜单</li>
+</ul>
+<p>2.设置WiFi</p>
+<ul>
+<li>打开开机配置文件夹 ，里面有ssh文件和wpa_supplicant.conf文件，使用Notepad++打开wpa_supplicant.conf文件；</li>
+<li>把wpa_supplicant.conf文件中，第一个network的中括号中的ssid和psk要改成自己实验室的wifi账号和密码，靠这个文件连接wifi；</li>
+<li>将ssh文件和wpa_supplicant.conf文件拷贝到boot路径下。</li>
+</ul>
+<p>1.系统烧录</p>
+<ul>
+<li>把16G内存卡插入读卡器中，将读卡器插在电脑上；</li>
+<li>非新盘可使用格式化工具对该盘进行格式化；</li>
+<li>使用Windows命令进行格式化：<ul>
+<li>首先把准备格式化的U盘插在电脑上，直接用Win+R组合键打开“运行” ，输入cmd打开命令提示符或者点击开始→所有程序→附件→命令提示符；</li>
+<li>输入<strong>diskpart——</strong> 回车“Enter”  ，进入diskpart交互环境；</li>
+<li>输入<strong>lis dis ——</strong>回车“Enter” ，显示所有的磁盘，这时会看到两（三）个磁盘，磁盘0和磁盘1，通过磁盘大小识别哪个是要格式化的U盘，例如磁盘1是U盘；</li>
+<li>输入<strong>sel dis 1 ——</strong>回车“Enter” ，选定“磁盘1” ；</li>
+<li>输入<strong>clean ——</strong>回车“Enter” ，删除“磁盘1”下的所有分区；</li>
+<li>输入<strong>create partition primary ——</strong>回车“Enter” ，在磁盘1下创建一个主分区;</li>
+<li>输入<strong>active ——</strong>回车“Enter” ，激活主分区。</li>
+</ul>
+</li>
+<li>安装镜像烧录工具Win32DiskImager-0.9.5-install.exe。解压<strong>2021-10-11-raspbian-buster-full-F.7z</strong>，打开镜像烧录软件，选择官方系统img，选择SD卡的盘符，这里不能选错，否则会被格式化，如下图配置；</li>
+<li>点击Write后会弹出对话框，选择YES，开始烧录。等待烧录完成，拔掉SD卡，插入树莓派上电，系统会自动安装完成；</li>
+<li>烧录完成，win系统可能会因为无法识别Linux分区格式而提示用户格式化，此时千万不要点格式化！直接点取消就可以了。如果点了格式化，树莓派会因为丢失系统文件而无法开机，需要重新烧录IMG镜像文件。</li>
+</ul>
+<h3 id="1-2-2-常见命令"><a href="#1-2-2-常见命令" class="headerlink" title="1.2.2 常见命令"></a>1.2.2 常见命令</h3><ul>
+<li>切换到用户目录： cd</li>
+<li>文件编辑：sudo nano</li>
+<li>重启：sudo reboot</li>
+<li>关机：sudo shutdown -h now     或者    sudo halt</li>
+<li>查看当前目录内容：ls</li>
+<li>切换到work工作目录：cd work</li>
+<li>安装：sudo apt-get install 软件名&#x2F;安装包</li>
+<li>查询树莓派IP：ipconfig</li>
+</ul>
+<h2 id="1-3-掌握双色LED和三色LED的编程和接线方式，掌握传感器基本知识"><a href="#1-3-掌握双色LED和三色LED的编程和接线方式，掌握传感器基本知识" class="headerlink" title="1.3 掌握双色LED和三色LED的编程和接线方式，掌握传感器基本知识"></a>1.3 掌握双色LED和三色LED的编程和接线方式，掌握传感器基本知识</h2><h3 id="1-3-1-双色LED灯"><a href="#1-3-1-双色LED灯" class="headerlink" title="1.3.1 双色LED灯"></a>1.3.1 双色LED灯</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623214019709.png"
+                      alt="image 20240623214019709"
+                ></p>
+<p>双基色LED灯。</p>
+<p>三种组合：灭、颜色1亮、颜色2亮。</p>
+<p>根据颜色组合不同，分为红蓝双色、黄蓝双色、红绿双色。</p>
+<p><strong>Python代码：</strong></p>
+<pre><code>import RPi.GPIO as GPIO
+import time
+
+colors = [0xFF00, 0x00FF, 0x0FF0, 0xF00F] # 颜色列表
+
+import RPi.GPIO as GPIO
+import time
+
+colors = [0xFF00, 0x00FF, 0x0FF0, 0xF00F]
+makerobo_pins = (11, 12)           # PIN管脚字典
+GPIO.setmode(GPIO.BOARD)  # 采用实际的物理管脚给GPIO口
+GPIO.setwarnings(False)             # 去除GPIO口警告
+GPIO.setup(makerobo_pins, GPIO.OUT)          # 设置Pin模式为输出模式
+GPIO.output(makerobo_pins, GPIO.LOW)       # 设置Pin管脚为低电平(0V)关闭LED
+p_R = GPIO.PWM(makerobo_pins[0], 2000)   # 设置频率为2KHz
+p_G = GPIO.PWM(makerobo_pins[1], 2000)   # 设置频率为2KHz
+
+p_R.start(0)
+p_G.start(0)
+def makerobo_pwm_map(x, in_min, in_max, out_min, out_max):
+               return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+def makerobo_set_Color(col):
+               R_val = col  &gt;&gt; 8
+               G_val = col &amp; 0x00FF
+               # 把0-255的范围同比例缩小到0-100之间
+               R_val = makerobo_pwm_map(R_val, 0, 255, 0, 100)
+               G_val = makerobo_pwm_map(G_val, 0, 255, 0, 100)
+               p_R.ChangeDutyCycle(R_val)     # 改变占空比
+               p_G.ChangeDutyCycle(G_val)     # 改变占空比
+# 调用循环函数
+def makerobo_loop():
+    while True:
+        for col in colors:
+            makerobo_set_Color(col)
+            time.sleep(0.5)
+# 释放资源
+def makerobo_destroy():
+    p_G.stop()
+    p_R.stop()
+    GPIO.output(makerobo_pins, GPIO.LOW)   # 关闭所有LED
+    GPIO.cleanup()                          # 释放资源
+# 程序入口
+if __name__ == &quot;__main__&quot;:
+    try:
+        makerobo_loop()         # 调用循环函数
+    except KeyboardInterrupt:            # 当按下Ctrl+C时，将执行destroy()子程序。
+        makerobo_destroy()    # 释放资源
+</code></pre>
+<p><strong>占空比：</strong></p>
+<p>是指一串理想脉冲序列中，正脉冲的持续时间与脉冲总周期的比值。</p>
+<p>调整LED通过电流和不通过电流的时间比来控制，由于人眼有视觉暂留特性，所以只要频率比较高是看不出来闪烁的。当然通过电流比不通过电流的时间比例越大，LED也就越亮。</p>
+<p><strong>书上的双色LED实验（C语言）中关键函数：</strong></p>
+<p>softPwmCreate()是创建PWM对象并且设置pwm范围用来调速</p>
+<p>softPwmWrite()就是送高电平，后面一个参数用来控制运动的速度</p>
+<h3 id="1-3-2-三色LED灯"><a href="#1-3-2-三色LED灯" class="headerlink" title="1.3.2 三色LED灯"></a>1.3.2 三色LED灯</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623214150785.png"
+                      alt="image 20240623214150785"
+                ></p>
+<p>RGB-LED模块中的R、G、B分别代表红、绿、蓝三种原色。</p>
+<p><strong>Python代码：</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">import RPi.GPIO as GPIO</span><br><span class="line">import time</span><br><span class="line">colors =[0xFF0000,0x00FF00,0x0000FF,0xFFFF00,0xFF00FF,0x00FFFF]</span><br><span class="line">makerobo_R =11</span><br><span class="line">makerobo_G =12</span><br><span class="line">makerobo_B =13</span><br><span class="line"></span><br><span class="line">#初始化程序</span><br><span class="line">def makerobo_setup ( Rpin , Gpin , Bpin ):</span><br><span class="line">    global pins</span><br><span class="line">    global p_R,p_G,p_B</span><br><span class="line">    pins =&#123;&#x27; pin_R &#x27;: Rpin ,&#x27; pin_G &#x27;: Gpin ,&#x27; pin_B &#x27;: Bpin &#125;</span><br><span class="line">    GPIO.setmode (GPIO.BOARD )			#采用实际的物理管脚给GPIO口</span><br><span class="line">    GPIO.setwarnings ( False )			#去除GPIO口警告</span><br><span class="line">    for i in pins :</span><br><span class="line">        GPIO . setup ( pins [ i ], GPIO.OUT )</span><br><span class="line">        GPIO . output ( pins [ i ], GPIO.LOW )</span><br><span class="line">    p_R = GPIO . PWM ( pins [&#x27; pin_R &#x27;],2000)</span><br><span class="line">    p_G = GPIO . PWM ( pins [&#x27; pin_G &#x27;],1999)</span><br><span class="line">    p_B = GPIO . PWM ( pins [&#x27; pin_B &#x27;],5000)</span><br><span class="line">    #初始化占空比为0（LED关闭）</span><br><span class="line">    p_R . start (0)</span><br><span class="line">    p_G . start (0)</span><br><span class="line">    p_B . start (0)</span><br><span class="line">def makerobo_pwm_map ( x , in_min , in_max , out_min , out_max ):</span><br><span class="line">    return ( x - in_min )*( out_max - out_min )/( in_max - in_min )+ out_min</span><br><span class="line"></span><br><span class="line">#关闭RGB-LED灯</span><br><span class="line">def makerobo_off ():</span><br><span class="line">    GPIO . setmode ( GPIO . BOARD )		#采用实际的物理管脚给GPIO口</span><br><span class="line">    for i in pins :</span><br><span class="line">        GPIO . setup ( pins [ i ], GPIO . OUT )			#设置Pin模式为输出模式</span><br><span class="line">        GPIO . output ( pins [ i ], GPIO . LOW )		#设置Pin管脚为低电平（0V）关闭LED</span><br><span class="line">#设置颜色</span><br><span class="line">def makerobo_set_Color ( col ):</span><br><span class="line">    R_val =( col &amp;0xff0000)&gt;&gt;16</span><br><span class="line">    G_val =( col &amp;0x00ff00)&gt;&gt;8</span><br><span class="line">    B_val =( col &amp;0x0000ff)&gt;&gt;0</span><br><span class="line">    R_val = makerobo_pwm_map ( R_val ,0,255,0,100)</span><br><span class="line">    G_val = makerobo_pwm_map ( G_val ,0,255,0,100)</span><br><span class="line">    B_val = makerobo_pwm_map ( B_val ,0,255,0,100)</span><br><span class="line">    p_R.ChangeDutyCycle (100-R_val)</span><br><span class="line">    p_G.ChangeDutyCycle (100-G_val)</span><br><span class="line">    p_B.ChangeDutyCycle (100-B_val)</span><br><span class="line">    </span><br><span class="line">#循环函数</span><br><span class="line">def makerobo_loop () :</span><br><span class="line">    while True:</span><br><span class="line">        for col in colors:</span><br><span class="line">            makerobo_set_Color (col)	#设置颜色</span><br><span class="line">            time.sleep(1)				#延时1s</span><br><span class="line">#资源释放</span><br><span class="line">def makerobo_destroy ():</span><br><span class="line">    p_R.stop ()			#关闭红色PWM</span><br><span class="line">    p_G.stop ()			#关闭绿色PWM</span><br><span class="line">    p_B.stop ()			#关闭蓝色PWM</span><br><span class="line">    makerobo_off ()		#关闭RGB-LED灯</span><br><span class="line">    GPIO. cleanup ()	#释放资源</span><br><span class="line">#程序入口</span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    try:</span><br><span class="line">        makerobo_setup(makerobo_R,makerobo_G,makerobo_B)		#初始化设置函数</span><br><span class="line">        makerobo_loop ()										#循环函数</span><br><span class="line">    except KeyboardInterrupt:									#当按下Ctrl+C，将执行destory()子程序</span><br><span class="line">        makerobo_destroy()										#资源释放</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-3-3-传感器基本知识"><a href="#1-3-3-传感器基本知识" class="headerlink" title="1.3.3 传感器基本知识"></a>1.3.3 传感器基本知识</h3><ol>
+<li><p>继电器（基本知识和电路）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623225058839-1719154262669-1---.png"
+                      alt="image 20240623225058839 1719154262669 1 副本"
+                ></p>
+<p>继电器模块是一种<strong>电控制器件</strong>，当输入量（激励量）的变化达到规定要求时，在电气输出电路中使被控制量发生预定的阶跃变化的一种电器。它具有控制系统（又称输入回路）和被控制系统（又称输出回路）之间的互动关系。通常用于自动化控制电路中，是<strong>小电流去控制大电流</strong>运作的一种“自动开关”。</p>
+<p><strong>电路原理图：</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623225318926-1719154402157-3.png"
+                      alt="image 20240623225318926 1719154402157 3"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623225347328-1719154429841-5.png"
+                      alt="image 20240623225347328 1719154429841 5"
+                ></p>
+</li>
+<li><p>干簧管</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623225456347-1719154499102-7.png"
+                      alt="image 20240623225456347 1719154499102 7"
+                ></p>
+<p>干簧管传感器是一种用于<strong>检测磁场</strong>的传感器。干簧管是干式舌簧管的简称，是一种有触电的无源电子开关元件，具有结构简单，体积小便于控制等优点。其外壳是一根密封的玻璃管，管中装有<strong>两个铁质的弹性簧片电板</strong>，还灌有一种叫<strong>金属铑</strong>的惰性气体。</p>
+<p>玻璃管中的两个簧片是分开的，当有磁性物质靠近时，管内两个簧片被磁化而相互吸引接触，两簧片吸合，电路连通；外磁力消失后，两簧片断开，电路断开。</p>
+<p><strong>用途</strong>：一种利用磁场信号来控制的线路开关器件，可以用于计数、限位等。</p>
+</li>
+<li><p>蜂鸣器（有源和无源）</p>
+<p>声音模块。</p>
+<ul>
+<li><p>有源蜂鸣器</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623225801982-1719154684548-9.png"
+                      alt="image 20240623225801982 1719154684548 9"
+                ></p>
+<p>有源蜂鸣器发出是单一的提示性报警声音，没有频率变化，内置振荡器；</p>
+<p>只要接线，就会发出蜂鸣声。</p>
+</li>
+<li><p>无源蜂鸣器</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623225820090-1719154703092-11.png"
+                      alt="image 20240623225820090 1719154703092 11"
+                ></p>
+<p>无源蜂鸣器的驱动方式为<strong>频率脉冲驱动</strong>，可以发出各种有频率的信号声音。</p>
+</li>
+</ul>
+<p>两者区别：发出的声音不同；驱动的方式不同；应用的场景不同。</p>
+<p>二者接线接法一致。</p>
+</li>
+<li><p>DS18B20</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623230351276-1719155033962-13.png"
+                      alt="image 20240623230351276 1719155033962 13"
+                ></p>
+<p>DS18B20是<strong>单总线</strong>接口温度传感器，通过<strong>一个IO口</strong>即可实现<strong>双向通信</strong>。</p>
+<p>TO-92封装看起来像普通的晶体管。</p>
+</li>
+<li><p>DHT11</p>
+<p>DHT11是一款<strong>有已校准数字信号输出</strong>的温湿度传感器。其精度湿度±5%RH，温度±2℃，量程为湿度20-90%RH，温度0-50℃。</p>
+<p>DHT11提供温度和湿度读数，<strong>价格低廉</strong>，<strong>精准度高使用简单</strong>，并且有python库可以直接导入使用，DHT系列传感器的库可以使用Adafruit DHT，<strong>应用也很广泛</strong>，在远程气象站、土壤监测器和家庭自动化系统都可以看见它的身影。</p>
+</li>
+<li><p>雨滴传感器</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623231152552-1719155515275-17.png"
+                      alt="image 20240623231152552 1719155515275 17"
+                ></p>
+<p>雨滴传感器是用于感应雨水的工具。它由两个模块组成，一个用于<strong>检测雨水的防雨板</strong>和一个<strong>控制模块</strong>，该</p>
+<p>模块<strong>比较模拟值并将其转换为数字值</strong>。</p>
+<p>传感器模块包括一个电位计，LM393比较器，LED，电容器和电阻器。上面的引脚图显示了控制模块的组件。雨滴传感器的控制模块具有4个输出。D0引脚连接到微控制器的数字引脚以进行数字输出，也可以使用模拟引脚，使用模拟输出时可以将A0引脚连接到微控制器的ADC引脚。</p>
+<p>LM393上的电位计来检测降雨阈值：顺时针增强灵敏度，逆时针降低灵敏度。</p>
+<p>雨板模块由铜轨组成，铜轨用作可变电阻器。它的阻力随雨板上的湿度而变化。</p>
+<p><strong>应用：</strong>雨滴传感器可用于汽车领域以自动控制雨刷器（或自动调整照明模式，自动关闭天窗），可用于农业</p>
+<p>领域以感应雨水，还可用于家庭自动化系统。</p>
+</li>
+<li><p>旋转编码器</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623232331853-1719156214344-21.png"
+                      alt="image 20240623232331853 1719156214344 21"
+                ></p>
+<p>旋转编码器是一种<strong>位置传感器</strong>，用于<strong>确定旋转轴的角位置</strong>。本实验使用的为增量式旋转编码器，通<strong>过旋转生成数字信号</strong>。</p>
+</li>
+<li><p>红外传感器及通信</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623232633399-1719156395574-23.png"
+                      alt="image 20240623232633399 1719156395574 23"
+                ></p>
+<p>红外避障传感器具有一对红外发送和接收传感器。红外LED发出一定频率的红外信号，当障碍物遮挡时，会被接收器应到的障碍物反射回去。</p>
+</li>
+<li><p>超声波</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240623232933969-1719156576419-25.png"
+                      alt="image 20240623232933969 1719156576419 25"
+                ></p>
+<p>超声波距离传感器内部有两个超声波传感器。一个用来作为<strong>发射器</strong>，一个作为<strong>接收器</strong>。可以实现2<strong>0mm至4000mm</strong>之间<strong>非接触距离检测</strong>。</p>
+<p>原理：</p>
+<p>(1)采用IO口TRIG触发测距，给至少10us微秒的高电平信号;</p>
+<p>(2)模块自动发送8个40khz的方波，自动检测是否有信号返回；</p>
+<p>(3)有信号返回，通过IO口ECHO输出一个高电平，高电平持续的时间就是超声波从发射到返回的时间。</p>
+<p>(4)测试距离&#x3D;(高电平时间*声速(340M&#x2F;S))&#x2F;2</p>
+</li>
+<li><p>LCD1602</p>
+<p>液晶显示屏和其他显示器大大的丰富了人机交互，但是当它们连接到控制器时，需要占用大量的I&#x2F;O口。因此，开发具有有I <sup> 2 </sup>C总线的LCD1602来解决该问题。</p>
+<p>I <sup> 2 </sup>C总线是由<strong>PHLIPS</strong>发明的一种<strong>串行</strong>总线。它是一种高性能的串行总线，具有多主机系统所需的总线控制和高速或低速设备同步功能。</p>
+<p>I <sup> 2 </sup>CLCD1602上的蓝色电位器用于调整背光以获得更好的显示效果。</p>
+<p><strong>I <sup> 2 </sup>C仅使用两个双向漏极开路线，串行数据线（SDA)和串行时钟线（SCL),通过电阻上拉。</strong>使用的典型电压为＋5V或＋3.3V,但允许使用其他电压的系统。</p>
+</li>
+<li><p>MPU6050测量（加速度、角速度、温度等）</p>
+</li>
+</ol>
+<p><em><strong>陀螺仪加速度传感器</strong></em></p>
+<p>MPU6050 传感器模块是完整的<strong>6轴运动跟踪设备</strong>。它结合了<strong>三轴陀螺仪</strong>，<strong>三轴加速度计</strong>和<strong>数字运动处理器</strong>，均采用<strong>小封装</strong>。此外，它还具有<strong>片上温度传感器</strong>的附加功能。它具有12C总线接口，可与微控制器通信。</p>
+<p>它具有<strong>辅助I2C总线</strong>，可与其他传感器设备（例如3轴磁力计，压力传感器等）通信。</p>
+<p>如果将3轴磁力计连接到辅助I2C总线，则MPU6050 可提供完整的9轴 Motion Fusion输出。</p>
+<p><em><strong>三轴陀螺仪</strong></em></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624155232296-1719215554823-7.png"
+                      alt="image 20240624155232296 1719215554823 7"
+                ></p>
+<p>MPU6050由具有<strong>微机电系统（MEMS）技术</strong>的三轴陀螺仪组成。如图所示，用于检测沿X、Y、Z轴的<strong>旋转速度</strong>，当陀螺仪绕任何感测轴旋转时，科里奥利效应会引起MPU6050内部的MEM检测到的振动，结果信号被放大，解调和滤波，<strong>以产生与角速度成正比例的电压</strong>。</p>
+<p><em><strong>三轴加速度计</strong></em></p>
+<p>芯片静置时：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624155404741-1719215647868-9.png"
+                      alt="image 20240624155404741 1719215647868 9"
+                ></p>
+<p>产生加速度时：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624155441952-1719215684330-11.png"
+                      alt="image 20240624155441952 1719215684330 11"
+                ></p>
+<p>MPU6050包含采用微机电（MEMs）技术的三轴加速度计用于检测沿X、Y、Z轴的<strong>倾斜角度</strong>。沿轴的加速度会偏移可移动质量，移动板（质量）的这种位移使差分电容器失衡，从而导致传感器输出，<strong>输出幅度与加速度成正比</strong>。</p>
+<h2 id="1-4-掌握PCF8591器件的基本知识、通信原理及管脚功能等"><a href="#1-4-掌握PCF8591器件的基本知识、通信原理及管脚功能等" class="headerlink" title="1.4 掌握PCF8591器件的基本知识、通信原理及管脚功能等"></a>1.4 掌握PCF8591器件的基本知识、通信原理及管脚功能等</h2><h3 id="1-4-1-A-D模数转换"><a href="#1-4-1-A-D模数转换" class="headerlink" title="1.4.1 A&#x2F;D模数转换"></a>1.4.1 A&#x2F;D模数转换</h3><p>能将<strong>模拟量</strong>转换为<strong>数字量</strong>的电路称为<strong>模数转换器</strong>，简称<strong>A&#x2F;D转换器或ADC</strong>；</p>
+<p>能将<strong>数字量</strong>转换为<strong>模拟量</strong>的电路称为<strong>数模转换器</strong>，简称<strong>D&#x2F;A转换器或DAC</strong>。</p>
+<p>ADC和DAC是沟通模拟电路和数字电路的桥梁，也可称之为两者之间的接口。</p>
+<p>模拟信号只有通过A&#x2F;D转化为数字信号后才能用软件进行处理，通过A&#x2F;D转换器或ADC来实现。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624160705151-1719216427711-13.png"
+                      alt="image 20240624160705151 1719216427711 13"
+                ></p>
+<h3 id="1-4-2-IIC总线（双向二线制同步串行总线）"><a href="#1-4-2-IIC总线（双向二线制同步串行总线）" class="headerlink" title="1.4.2 IIC总线（双向二线制同步串行总线）"></a>1.4.2 IIC总线（双向二线制同步串行总线）</h3><p><strong>主器件</strong>用于启动总线传送数据，并产生时钟以开放传送的器件，此时任何被寻址的器件均被认为是<strong>从器件</strong>。</p>
+<ul>
+<li>如果主机要<strong>发送</strong>数据给从器件，则主机首先寻址从器件，然后主动发送数据至从器件，最后由主机终止数据传送；</li>
+<li>如果主机要<strong>接收</strong>从器件的数据，首先由主器件寻址从器件，然后主机接收从器件发送的数据，最后由主机终止接收过程。</li>
+</ul>
+<h3 id="1-4-3-PCF8591"><a href="#1-4-3-PCF8591" class="headerlink" title="1.4.3 PCF8591"></a>1.4.3 PCF8591</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624170011793-1719219614589-25.png"
+                      alt="image 20240624170011793 1719219614589 25"
+                ></p>
+<p><strong>PCF8591</strong>器件的地址、控制和数据通过两线双向I2C总线传输。器件功能包括多路复用模拟输入、片上跟踪和保持功能、8位模数转换和8位数模拟转换。最大转换速率取决于I2C总线的最高速率。</p>
+<p>PCF8591是一款单芯片，单电源，低功耗8位CMOS数据采集设备。</p>
+<ul>
+<li><p>四个模拟输入（AIN0, AIN1, AIN2, AIN3）</p>
+</li>
+<li><p>一个模拟输出（AOUT）</p>
+</li>
+<li><p>一个串行I2C总线接口（SDA,SLC）。</p>
+</li>
+<li><p>三个地址A0,A1和A2用于对硬件地址进行编程（允许使用多达8个连接到I2C总线的设备）</p>
+</li>
+<li><p>VDD:器件内部的工作电压，正电源电压，接电源（2.5V～6V）正极。</p>
+</li>
+<li><p>VCC:接入电路的电压</p>
+</li>
+<li><p>VSS:电路公共接地端电压</p>
+</li>
+<li><p>GND：在电路里常被定为电压参考基点。</p>
+</li>
+</ul>
+<p><strong>AD&#x2F;DA转换</strong>：PCF8591是AINx端口输入模拟电压，然后PCF8591将转换后的数字量通过I2C总线发送给单片机；或是单片机通过I2C总线给一个数字量，然后PCF8591通过AOUT端口将模拟电压输出。</p>
+<ol>
+<li><p><strong>器件地址</strong></p>
+<p>在I2C总线协议中，在启动条件之后的第一个字节。每一个I 2C器件都有一个器件地址，来区分不同的I 2C设备，</p>
+<p>下面是PCF8591的地址:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624163905923-1719218348201-17.png"
+                      alt="image 20240624163905923 1719218348201 17"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624163947527-1719218390508-19.png"
+                      alt="image 20240624163947527 1719218390508 19"
+                ></p>
+<ul>
+<li>它的地址是由1001（固定部分）和A2A1A0（可编程部分）组成的，可编程部分必须按照地址引脚A0,A1,A2进行设置。</li>
+<li>地址字节的最后一位是读&#x2F;写，它设置了数据传输的方式：0表示下一个字节往总线上写数据，１表示下一个字节从总线上读取数据。</li>
+<li>在原理图中可以看出，A2A1A0均为0，所以7位器件地址（1001000）为0x48。</li>
+</ul>
+</li>
+<li><p><strong>控制字格式</strong></p>
+<p>发送到PCF8591的第二个字节将被存储在其<strong>控制寄存器</strong>中，并且需要控制器件功能。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624164054516-1719218457053-21.png"
+                      alt="image 20240624164054516 1719218457053 21"
+                ></p>
+<ul>
+<li>最高位默认为０;</li>
+<li>第６位是选择是否<strong>允许模拟电压输出</strong>，在DA转换时设置为1，AD转换时设置为0或1均可;</li>
+<li>第5&#x2F;4位是选择<strong>模拟电压输出方式</strong>，一般选择<strong>00单端输入方式</strong>，其他几种方式可以查阅技术手册;</li>
+<li>第3位默认为０;</li>
+<li>第2位是<strong>自动增量使能位</strong>，如果自动增量（auto-increment）标志置1，每次A&#x2F;D 转换后通道号将自动增加；</li>
+<li>第1&#x2F;0位是在<strong>AD转换</strong>时选择哪一个通道输入的电压转换为数字量；</li>
+</ul>
+</li>
+<li><p><strong>AD转换应用开发</strong></p>
+<ul>
+<li><p>AD的位数：表明这个AD共有2<sup>n</sup>个刻度，8位AD，输出的刻度是0~255。 8591就是8位精度的，因此它digtal Read的数据在0-255之间。</p>
+</li>
+<li><p>分辨率：就是AD能够分辨的最小的模拟量变化。假设5.10V的系统用8位的AD采样，那么它能分辨的最小电压就是5.10&#x2F;255&#x3D;0.02V。</p>
+</li>
+<li><p>Raspberry PI是“MASTER” ，PCF是“SLAVER” ，他们之间是主从关系。每次数据传输都是由“MASTER”主动开启的。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-OPENCV"><a href="#1-5-OPENCV" class="headerlink" title="1.5 OPENCV"></a>1.5 OPENCV</h2><h3 id="1-5-1-掌握Opencv基础应用"><a href="#1-5-1-掌握Opencv基础应用" class="headerlink" title="1.5.1 掌握Opencv基础应用"></a>1.5.1 掌握Opencv基础应用</h3><ol>
+<li><p>读取、显示、保存图像</p>
+<ul>
+<li><p>读入图像</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imread(filepath,flags)</span><br></pre></td></tr></table></figure></div>
+
+<p>filepath：要读入图片的完整路径</p>
+<p>flags：标志位，，{cv2.IMREAD_COLOR，cv2.IMREAD_GRAYSCALE，cv2.IMREAD_UNCHANGED}。</p>
+<p><strong>cv2.IMREAD_COLOR</strong>：默认参数，读入一幅彩色图片，忽略alpha通道，可用1作为实参替代。</p>
+<p><strong>cv2.IMREAD_GRAYSCALE</strong>：读入灰度图片，可用0作为实参替代。</p>
+<p><strong>cv2.IMREAD_UNCHANGED</strong>：读入完整图片，包括alpha通道，可用-1作为实参替代。</p>
+<p><strong>alpha通道</strong>：又称A通道，是一个8位的灰度通道，该通道用256级灰度来记录图像中的透明度信息，定义透明、不透明和半透明区域，其中黑表示全透明，白表示不透明，灰表示半透明程度。</p>
+</li>
+<li><p>显示图像</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imshow(wname,img) </span><br></pre></td></tr></table></figure></div>
+
+<p>wname：设置窗口名称；</p>
+<p>img：图片名称。</p>
+</li>
+<li><p>保存图像</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imwrite(file,img,num)</span><br></pre></td></tr></table></figure></div>
+
+<p>file：要保存的文件名，写出完整路径，路径不能有中文。</p>
+<p>num：对于JPEG，表示的是图像的质量，用0-100的整数表示，默认95；对于png ，表示的是压缩级别，默认为3，从0到9压缩级别越高图像越小。</p>
+</li>
+<li><p>翻转图像</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.flip(img,flipcode)</span><br></pre></td></tr></table></figure></div>
+
+<p>flipcode：控制翻转效果。</p>
+<p>flipcode &#x3D; 0：沿x轴翻转；</p>
+<p>flipcode &gt; 0：沿y轴翻转；</p>
+<p>flipcode &lt; 0：x,y轴同时翻转。</p>
+</li>
+<li><p>键盘绑定函数</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cv2.waitKey()</span><br><span class="line"></span><br><span class="line">if cv2.waitKey(1) &amp; 0xFF == ord(&#x27;q&#x27;):</span><br><span class="line">	break</span><br><span class="line">cv2.waitKey(1)在有按键按下的时候返回按键的ASCII值，否则返回-1</span><br><span class="line"></span><br><span class="line">&amp; 0xFF的按位与操作只取cv2.waitKey(1)返回值最后八位，因为有些系统cv2.waitKey(1)的返回值不止八位</span><br><span class="line"></span><br><span class="line">ord(‘q’)表示q的ASCII值</span><br><span class="line"></span><br><span class="line">总体效果：按下q键后break</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>时间单位为毫秒。当参数为0时，将会无限期的等待键盘输入。</p>
+</li>
+<li><p>关闭所有建立的窗口</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>关闭指定窗口</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.destoryWindow(image)</span><br></pre></td></tr></table></figure></div>
+
+<p>image：想要关闭的窗口名。</p>
+</li>
+</ul>
+</li>
+<li><p>缩放、剪裁图像</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">imgResize = cv2.resize(img1,(500,200))</span><br><span class="line">print(imgResize.shape)</span><br><span class="line">cv2.imshow(&#x27;image Resize&#x27;,imgResize)</span><br><span class="line"></span><br><span class="line">imgCropped = img1[200:490 , 48:116]</span><br><span class="line">print(imgCropped.shape)</span><br><span class="line">cv2.imshow(&#x27;image Cropped&#x27;,imgCropped)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>绘制图形</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624213700056-1719236223513-42.png"
+                      alt="image 20240624213700056 1719236223513 42"
+                ></p>
+</li>
+<li><p><strong>与视频相关的函数</strong></p>
+<ul>
+<li><p><strong>cv2.VideoCapture( ) 获取视频</strong></p>
+<p>参数可以是设备的索引号，或是一个视频文件。</p>
+</li>
+<li><p><strong>ret, frame &#x3D; cap.read()读取每一帧</strong></p>
+<p>ret：表示是否读取成功；</p>
+<p>frame：表示读取到的每一帧。</p>
+</li>
+<li><p><strong>cap.get(propId) 获取视频的某些参数信息</strong></p>
+<p>propId ：代表视频的某种属性，在0 到18 之间的整数取值。</p>
+<p>3-视频流中帧的宽度</p>
+<p>4-视频流中帧的高度</p>
+</li>
+<li><p><strong>cap.set(propId,value) 修改视频的某些参数信息</strong></p>
+<p>propId：视频属性的代表数字；</p>
+<p>value：想要设置成的新值。</p>
+</li>
+<li><p><strong>cv2.VideoWriter(filename, fourcc, fps, frameSize[, isColor] ) 视频保存</strong></p>
+<p>filename：保存文件的文件名；</p>
+<p>fourcc：指定视频编码器的4字节代码；</p>
+<p>fps：帧率；</p>
+<p>frameSize：帧大小，或是一个视频文件；</p>
+<p>isColor：默认为true，如果为true，则视频为彩色，否则为灰度视频</p>
+</li>
+<li><p><strong>fourcc 编码参数：</strong></p>
+<p>cv2.VideoWriter_fourcc(‘X’ , ‘V’ , ‘I’ , ‘D’)—MPEG-4编码类型</p>
+<p>cv2.VideoWriter_fourcc(‘I’ , ‘4’ , ‘2’ , ‘0’)—未压缩的YUV颜色编码</p>
+<p>cv2.VideoWriter_fourcc(‘P’ , ‘I’ , ‘M’ , ‘1’)—MPEG-1编码类型</p>
+<p>cv2.VideoWriter_fourcc(‘T’ , ‘H’ , ‘E’ , ‘O’)—OGGVorbis，音频压缩格式，类似于MP3等的音乐格式</p>
+<p>cv2.VideoWriter_fourcc(‘F’ , ‘L’ , ‘V’ , ‘1’)—FLV是FLASH VIDEO的简称</p>
+</li>
+<li><p><strong>cap.release() 释放视频捕捉器</strong></p>
+</li>
+</ul>
+</li>
+<li><p>读取、播放视频文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624215513392-1719237315915-44.png"
+                      alt="image 20240624215513392 1719237315915 44"
+                ></p>
+</li>
+<li><p>保存摄像头获取的视频</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240624222433110-1719239076851-48.png"
+                      alt="image 20240624222433110 1719239076851 48"
+                ></p>
+</li>
+</ol>
+<h3 id="1-5-1-OpenCV颜色识别"><a href="#1-5-1-OpenCV颜色识别" class="headerlink" title="1.5.1 OpenCV颜色识别"></a>1.5.1 OpenCV颜色识别</h3><p><strong>1.RGB色彩模式</strong></p>
+<p>是通过对红(R)、绿(G)、蓝(B)三个颜色通道的变化以及它们相互之间的叠加来得到各种颜色。</p>
+<p>在openCV中，像素由<strong>BGR</strong>三个参数表示，每个参数通常具有<strong>0-255</strong>之间的值。</p>
+<p><strong>2.HSV颜色空间</strong></p>
+<p>颜色空间，六角锥体模型</p>
+<p>H——色相&#x2F;色调（hue）</p>
+<p>S——饱和度（saturation）</p>
+<p>V&#x2F;B——亮度（value&#x2F;bringhtness）</p>
+<p>opencv中的HSV范围：</p>
+<p>H：0——180</p>
+<p>S：0—— 255</p>
+<p>V：0—— 255</p>
+<p><strong>3. 色彩空间转换</strong>     <strong>cv2.cvtColor(input_image,flag)</strong></p>
+<p>input_image：要进行处理的图片。</p>
+<p>flag：转换类型。</p>
+<p>对于BGR——Gray，flag就是cv2.COLOR_BGR2GRAY；</p>
+<p>对于BGR——HSV ，flag就是cv2.COLOR_BGR2HSV。</p>
+<p><strong>4. 色彩阀值化处理</strong>     <strong>cv2.inRange(hsv,lower_range,upper_range)</strong></p>
+<p>在图像处理的过程中，使用各种形态学操作或者滤波的方式来突显我们关注的元素，同时降低噪声并减少干扰我们提取关键元素的影响项。</p>
+<p>hsv：指的是原图；</p>
+<p>lower_range：图像中低于这个lower_range的值，图像值变为0；</p>
+<p>upper_range：图像中高于这个upper_range的值，图像值变为0；</p>
+<p>在lower_range～upper_range之间的值变成255。</p>
+<p><strong>5. 图像ROI</strong></p>
+<p><strong>ROI(region of interest)，感兴趣区域</strong>。机器视觉、图像处理中，从被处理的图像以方框、圆、椭圆、不规则多边形等方式勾勒出<strong>需要处理的区域</strong>，称为感兴趣区域。ROI通常用来作为图像分类的样本、掩膜、裁剪区或及其他操作。</p>
+<p><strong>6. 掩膜（mask）</strong></p>
+<p>用选定的图像、图形或物体，对处理的图像（全部或局部）进行遮挡，来控制图像处理的区域或处理过程。掩膜的用法如下：</p>
+<p>1） 提取感兴趣区：用预先制作的感兴趣区掩膜与待处理图像相乘，得到感兴趣区图像，感兴趣区内图像值保持不变，而区外图像值都为0；</p>
+<p>2） 屏蔽作用：用掩膜对图像上某些区域作屏蔽，使其不参加处理或不参加处理参数的计算，或仅对屏蔽区作处理或统计；</p>
+<p>3）结构特征提取：用相似性变量或图像匹配方法检测和提取图像中与掩膜相似的结构特征；</p>
+<p>4）特殊形状图像的制作。</p>
+<p><strong>7.</strong> <strong>cv2.bitwise_and(src1, src2, dst&#x3D;None, mask&#x3D;None)</strong></p>
+<p>src1、src2：为输入图像或标量，标量可以为单个数值或一个四元组。</p>
+<p>dst：可选输出变量，如果需要使用非None则要先定义，且其大小与输入变量相同。</p>
+<p>mask：图像掩膜，可选参数，为8位单通道的灰度图像，用于指定要更改的输出图像</p>
+<p>数组的元素，即输出图像像素只有mask对应位置元素不为0的部分才输出，否则该位置</p>
+<p>像素的所有通道分量都设置为0。</p>
+<p>返回值为结果图像矩阵，如果dst传入了实参，则返回值与dst对应实参相同。</p>
+<h3 id="1-5-2-物体位置颜色识别流程"><a href="#1-5-2-物体位置颜色识别流程" class="headerlink" title="1.5.2 物体位置颜色识别流程"></a>1.5.2 物体位置颜色识别流程</h3><h4 id="1-5-2-1-物体位置检测"><a href="#1-5-2-1-物体位置检测" class="headerlink" title="1.5.2.1 物体位置检测"></a>1.5.2.1 物体位置检测</h4><p><strong>相关库函数—— print_function</strong></p>
+<p>from _ future _  import print_function</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625150349712-1719299031920-11.png"
+                      alt="image 20240625150349712 1719299031920 11"
+                ></p>
+<p>在代码开头加上</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import print_function</span><br></pre></td></tr></table></figure></div>
+
+<p>这句之后,可以在python2.X中按照python3.X的方法使用这些函数。</p>
+<p><strong>相关库函数–VideoStream</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import imutils</span><br><span class="line">from imutils.video import VideoStream</span><br></pre></td></tr></table></figure></div>
+
+<p>使用imutils工具包的VideoStream类读取视频流</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vs = VideoStream(0).start() #打开摄像头</span><br><span class="line"></span><br><span class="line">frame = vs.read() #读取一帧图像</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">camera = cv2.VideoCapture(0) #打开摄像头</span><br><span class="line">参数可以是设备的索引号，或是一个视频文件。</span><br><span class="line">(grabbed, frame) = camera.read() #读取一帧图像</span><br><span class="line">（是否读取成功，读取到的每一帧）</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>BGR转换HSV</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)</span><br></pre></td></tr></table></figure></div>
+
+<p>RGB图像与相机传感器输出的原始数据相对应；</p>
+<p>HSV图像则更符合人眼的直观视觉。</p>
+<p>因此处理图像时，往往先将RGB图像转换为HSV图像，在HSV色彩空间对图像进行处理，</p>
+<p>处理完毕后再将HSV图像转换为RGB图像。</p>
+<p><strong>指定ROI</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.inRange(hsv, colorLower, colorUpper)</span><br></pre></td></tr></table></figure></div>
+
+<p> 为图片指定感兴趣区域ROI(region of interest)</p>
+<p> 指定ROI后，再进行掩膜、裁剪等操作。</p>
+<p><strong>图像形态学处理</strong></p>
+<p>形态学处理主要<strong>从图像内提取分量信息</strong>，该分量信息通常对于表达和描绘图像的形状具有重要意义，通常是图像理解时所使用的最本质的形状特征。</p>
+<p><strong>图像滤波</strong></p>
+<p>原图像上存在很多和周围像素差距过大的像素点，</p>
+<p>这种<strong>噪声点</strong>可能会对之后搜索图像关键因素产生干扰。</p>
+<p>图像常见噪声：高斯噪声，泊松噪声，乘性噪声，椒盐噪声</p>
+<p><strong>高斯噪声</strong>是指它的概率密度函数服从高斯分布（即正态分布）的一类噪声。如果噪声幅度分布服从高斯分布，而它的<strong>功率谱密度</strong>又是均匀分布的，则称它为<strong>高斯白噪声</strong>。</p>
+<p><strong>产生原因：</strong></p>
+<p>1）图像传感器在拍摄时市场不够明亮、亮度不够均匀；</p>
+<p>2）电路各元器件自身噪声和相互影响；</p>
+<p>3）图像传感器长期工作，温度过高。</p>
+<p>图像处理中常用的滤波算法有<strong>均值滤波、中值滤波以及高斯滤波</strong>等。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625151817812-1719299899896-17.png"
+                      alt="image 20240625151817812 1719299899896 17"
+                ></p>
+<ul>
+<li><p>高斯滤波</p>
+<p>高斯滤波是一种线性平滑滤波，适用于消除高斯噪声，广泛应用于图像处理的减噪过程。</p>
+<p><strong>线性滤波</strong>可以说是图像处理最基本的方法，它可以允许我们对图像进行处理，产生很多不同的效果。做法很简单。首先，我们有一个二维的滤波器矩阵（有个高大上的名字叫卷积核）和一个要处理的二维图像。然后，<strong>对于图像的每一个像素点，计算它的邻域像素和滤波器矩阵的对应元素的乘积，然后加起来，作为该像素位置的值。</strong>这样就完成了滤波过程。</p>
+<p>1.离散化窗口滑窗卷积</p>
+<p>2.傅里叶变换</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cv2.GaussianBlur(src,ksize,sigmaX)</span><br><span class="line">#  src：原始图像 </span><br><span class="line">#  ksize:核大小，奇数</span><br><span class="line">#  sigmaX:X方向方差；Y方向方差与X保持一致</span><br><span class="line">sigma = 0.3*((ksize-1)*0.5-1)+0.8</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625152147017-1719300109455-19.png"
+                      alt="image 20240625152147017 1719300109455 19"
+                ></p>
+<p>  每个像素点所占的权重不一样，距离越近，权重越大，距离越远，权重越小。</p>
+<p>  sigmaX越小，图像平滑越不明显。</p>
+<p>  通俗的讲，高斯滤波就是对整幅图像进行<strong>加权平均</strong>的过程。</p>
+<p>  每一个像素点的值，都由其本身和邻域内的其他像素值经过加权平均后得到。</p>
+<p>  <strong>图像腐蚀加上高斯模糊，可以使得图像的色彩更加突出，少了很多的颜色干扰，色彩追踪更加精准。</strong></p>
+<p><strong>查找轮廓</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">image,contours,hierarchy = cv2.findContours( binary_image,	#要查找轮廓的图像</span><br><span class="line"></span><br><span class="line">mode=cv2.RETR_EXTERNAL,	#只检测外轮廓</span><br><span class="line"></span><br><span class="line">method=cv2.CHAIN_APPROX_SIMPLE)		#只保留重点坐标</span><br></pre></td></tr></table></figure></div>
+
+<p>返回值：</p>
+<p>image ：可能输出与binary_image类似的二值图像。—opencv-python 4.x中已去掉该参数</p>
+<p>contours：一个列表，list中每个元素都是图像中的一个轮廓，用numpy中的ndarray表示。</p>
+<p>hierarchy：一个ndarray, 每条轮廓对应的属性</p>
+<p><strong>计算轮廓面积并取最大</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double contourArea(InputArray contour, bool oriented = false); # 计算轮廓的面积</span><br></pre></td></tr></table></figure></div>
+
+<p>contour，输入的二维点集（轮廓顶点），可以是 vector 或 Mat 类型。</p>
+<p>oriented，面向区域标识符。有默认值 false。若为 true，该函数返回一个<strong>带符号的面积值</strong>， 正负取决于轮廓的方向（顺时针还是逆时针）。<strong>若为 false，表示以绝对值返回。</strong> </p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625153030509-1719300633215-21.png"
+                      alt="image 20240625153030509 1719300633215 21"
+                ></p>
+<p>key关键字的作用：对每个cnts元素先使用key指定的function来处理，然后再比较、返回预期的元素。</p>
+<p><strong>最小外接圆</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625153107908-1719300670416-23.png"
+                      alt="image 20240625153107908 1719300670416 23"
+                ></p>
+<p>使用<strong>迭代算法</strong>查找包含轮廓的最小区域圆。</p>
+<p>返回值：圆心坐标与半径。</p>
+<p>返回圆应满足：</p>
+<p>① 轮廓上的点均在圆形空间内。</p>
+<p>② 没有面积更小的满足条件的圆。</p>
+<p><strong>物体位置识别代码流程</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625153307349-1719300789737-25.png"
+                      alt="image 20240625153307349 1719300789737 25"
+                ></p>
+<h4 id="1-5-2-2-可选颜色球状物体追踪"><a href="#1-5-2-2-可选颜色球状物体追踪" class="headerlink" title="1.5.2.2 可选颜色球状物体追踪"></a>1.5.2.2 可选颜色球状物体追踪</h4><p>原理：视频图像（HSV）各通道进行阈值分割后进行融合，在融合后的图像中检测出圆形并进行追踪。</p>
+<p>过程：</p>
+<p>1.图像转换到HSV空间,并按照通道进行分割；</p>
+<p>​	1）色彩空间转换</p>
+<p>​	hsv &#x3D; <strong>cv2.cvtColor</strong>(frame,cv2.COLOR_BGR2HSV)</p>
+<p>​	2）通道分割</p>
+<p>​	hue,sat,val &#x3D; <strong>cv2.split</strong>(hsv)</p>
+<p>2、根据选定阈值，各通道图像去除背景部分</p>
+<p>hthresh &#x3D;<strong>cv2.inRange</strong>(np.array(hue),np.array(hmn),np.array(hmx))</p>
+<p>sthresh &#x3D; <strong>cv2.inRange</strong>(np.array(sat),np.array(smn),np.array(smx))</p>
+<p>vthresh &#x3D; <strong>cv2.inRange</strong>(np.array(val),np.array(vmn),np.array(vmx))</p>
+<p>3、将H、S、V通道图像进行与运算</p>
+<p>tracking &#x3D; <strong>cv2.bitwise_and</strong>(hthresh,cv2.bitwise_and(sthresh,vthresh))</p>
+<p>4、对融合后的图像进行形态学处理和滤波</p>
+<p>kernel &#x3D; np.ones((5,5),np.uint8)</p>
+<p>dilation &#x3D; cv2.dilate(tracking,kernel,iterations &#x3D; 1)</p>
+<p>closing &#x3D; cv2.morphologyEx(dilation, cv2.MORPH_CLOSE, kernel)</p>
+<p>closing &#x3D; cv2.GaussianBlur(closing,(5,5),0)</p>
+<p>5、检测出圆形</p>
+<p><strong>cv2.HoughCircles</strong>(closing,cv2.HOUGH_GRADIENT,2,120,param1&#x3D;120,param2&#x3D;50,minRadius&#x3D;10,maxRadius&#x3D;0)</p>
+<p>函数：cv2.HoughCircles(image, method, dp, minDist[, circles[,param1[, param2[, minRadius[, maxRadius]]]]])</p>
+<p>​			dp 为检测内侧圆心的累加器图像的分辨率于输入图像之比的倒数，如dp&#x3D;1，累加器和输入图像具有相同的分辨率，如果dp&#x3D;2，累计器便有输入图像一半那么大的宽度和高度。</p>
+<p>​			param1有默认值100，它是method设置的检测方法的对应的参数，对当前唯一的方法霍夫梯度法cv2.HOUGH_GRADIENT，它表示传递给canny边缘检测算子的高阈值，而低阈值为高阈值的一半。</p>
+<p>​			param2有默认值100，它是method设置的检测方法的对应的参数，对当前唯一的方法霍夫梯度法cv2.HOUGH_GRADIENT，它表示<strong>在检测阶段圆心的累加器阈值</strong>，它越小，就越可以检测到更多根本不存在的圆，而它越大的话，能通过检测的圆就更加接近完美的圆形了，所以要根据检测圆的大小变化 。</p>
+<p>OpenCV中的<strong>CV2.HoughCircles（）函数</strong>实现了圆形检测，它使用的算法也是改进的霍夫变换——<strong>2-1霍夫变换（21HT）</strong>。也就是把霍夫变换分为两个阶段，从而减小了霍夫空间的维数。<strong>第一阶段用于检测圆心，第二阶段从圆心推导出圆半径</strong>。</p>
+<p>检测圆半径的方法是从圆心到圆周上的任意一点的距离（即半径）是相同，只要确定一个阈值，只要相同距离的数量大于该阈值，我们就认为该距离就是该圆心所对应的圆半径。</p>
+<p>6、将检测出的圆形画出来。</p>
+<h4 id="1-5-2-3-颜色物体追踪"><a href="#1-5-2-3-颜色物体追踪" class="headerlink" title="1.5.2.3 颜色物体追踪"></a>1.5.2.3 颜色物体追踪</h4><p><strong>1. 相关库函数–collections</strong></p>
+<ul>
+<li>deque</li>
+</ul>
+<p>是”double ended queue”的缩写，<strong>双端队列</strong>，队首和队尾都支持元素的插入和弹出.</p>
+<p>使用原因：</p>
+<p>受<strong>全局锁GIL(Global Interpreter Lock)<strong>的管理，它是</strong>线程安全</strong>的。而list则没有GIL锁，因此不是线程安全的。也就是说在并发场景下，list可能会导致一致性问题，而deque不会。</p>
+<p>deque<strong>支持固定长度</strong>，当长度满了之后，当我们继续append时，它会自动弹出最早插入的数据。</p>
+<p>使用：</p>
+<p><strong>1）.创建deque序列</strong></p>
+<p>deque(maxlen&#x3D;N)，创建了一个固定长度的队列，当有新的记录加入而队列已满时会自动移动除最老的那条记录。maxlen可以省略</p>
+<p><strong>2）.deque序列的入队和出队</strong></p>
+<p>1）单个数据入队</p>
+<p>append(item)，添加一个数据到队列的<strong>尾部</strong>。与列表的append()方法功能相似。</p>
+<p>appendleft(item)，添加一个数据到队列的<strong>头部</strong>。与append()的添加方向相反。</p>
+<p>2）可迭代对象入队</p>
+<p>extend(iterable)，将一个可迭代对象中的数据按顺序添加到队列的尾部。</p>
+<p>Iterable:list,tuple,dic,string,set 等</p>
+<p>3）指定位置插入数据</p>
+<p>insert(index, item)，在队列中的指定位置插入一个数据，index为指定的位置索引。</p>
+<p>4）队列两端的出队方法</p>
+<p>pop()，将队列尾部的数据弹出，并作为返回值。</p>
+<p>popleft()，将队列头部的数据弹出，并作为返回值。</p>
+<p><strong>2.相关库函数–argparse</strong></p>
+<p>argparse是一个用来<strong>解析命令行参数的 Python 库</strong>，它是 Python 标准库的一部分。argparse 模块<em>使编写用户友好的命令行界面变得容易</em>。程序定义了所需的参数，而 argparse 将找出如何从 sys.argv （命令行）中<em>解析这些参数</em>。argparse 模块还会自动<em>生成帮助和使用消息</em>，并在用户为程序提供无效参数时<em>发出错误</em>。</p>
+<p>使用argparse的主要步骤：</p>
+<ol>
+<li><p>导入argparse包；</p>
+</li>
+<li><p>创建ArgumentParser()参数对象；</p>
+</li>
+<li><p>调用add_argument()方法往参数对象中添加参数；</p>
+</li>
+<li><p>使用parse_args()解析添加参数的参数对象，获得解析对象；程序的其他部分需要使用命令行参数时，用解析对象.参数获取。</p>
+</li>
+</ol>
+<p>重要参数：</p>
+<p><strong>description——在参数帮助文档之前显示的文本（默认值：无）</strong></p>
+<p>name or flags——一个命名或者一个选项字符串的列表</p>
+<p><strong>default——当参数未在命令行中出现并且也不存在于命名空间对象时所产生的值</strong></p>
+<p><strong>3.相关库函数–imutils</strong></p>
+<p>imutils是Adrian Rosebrock开发的一个python工具包，它整合了opencv、numpy和matplotlib的相关操作，<strong>主要是用来进行图形图像的处理，如图像的平移、旋转、缩放、骨架提取、显示</strong>等等，后期又加入了针对视频的处理，如摄像头、本地文件等。</p>
+<p>安装imutils：pip install imutils</p>
+<p>imutils常用函数使用：</p>
+<p><strong>1）.图像平移</strong></p>
+<p>imutils.<strong>translate</strong>(img,x,y)</p>
+<p>参数：</p>
+<p>img:要移动的图像</p>
+<p>x:沿x轴方向移动的像素个数</p>
+<p>y: 沿y轴方向移动的像素个数</p>
+<p><strong>2）.图像缩放</strong></p>
+<p>imutils.<strong>resize</strong>(img,width&#x3D;100)，自动保持原有图片的宽高比，只指定宽度weight和height即可。</p>
+<p><strong>3）.图像旋转</strong></p>
+<p>在OpenCV中进行旋转时使用的是<strong>仿射变换</strong>（向量空间：线性变换+平移），在这里图像旋转方法是<strong>imutils.rotate()<strong>，跟2个参数，第一个是图片数据，第二个是旋转的角度，旋转是朝</strong>逆时针</strong>方向。同时imutils还提供了另一个相似的方法, <strong>rotate_round()，</strong>它就是按<strong>顺时针</strong>旋转的。</p>
+<p>示例：</p>
+<p>逆时针旋转</p>
+<p>rotated &#x3D; <strong>imutils.rotate</strong>(image, 90)</p>
+<p>顺时针旋转</p>
+<p>rotated_round &#x3D; <strong>imutils.rotate_bound</strong>(image, 90)</p>
+<p><strong>4）.骨架提取（边缘提取）</strong></p>
+<p>骨架提取（边缘提取），是指对图片中的物体进行拓扑骨架(topologicalskeleton)构建的过程。imutils提供的方法是<strong>skeletonize()<strong>，第二个参数是结构参数的尺寸(structuring element)，相当于是一个</strong>粒度</strong>，越小需要处理的时间越长。可以设置为 (3,3)。</p>
+<p>示例：</p>
+<p>skeleton &#x3D; imutils.skeletonize(gray, size&#x3D;(7, 7))</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625195059307-1719316262054-37.png"
+                      alt="image 20240625195059307 1719316262054 37"
+                ></p>
+<p><strong>5）.转RGB,使用Matplotlib显示</strong></p>
+<p>在OpenCV的Python绑定中，图像以BGR顺序表示为NumPy数组。使用该cv2.imshow功能时效果很好。</p>
+<p>但是，如果打算使用Matplotlib，该plt.imshow函数将假定图像按RGB顺序排列。调用cv2.cvtColor解决此问题，也可以使imutils中opencv2matplotlib便捷功能。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625200952227-1719317394408-39.png"
+                      alt="image 20240625200952227 1719317394408 39"
+                ></p>
+<p><strong>4.搜索轮廓</strong></p>
+<p>image,contours,hierarchy &#x3D; <strong>cv2.findContours</strong>( binary_image,  mode&#x3D;cv2.RETR_TREE,   method&#x3D;cv2.CHAIN_APPROX_SIMPLE)</p>
+<p>（1）输入参数：</p>
+<p>binary_image：带有轮廓信息的二值图像</p>
+<p>mode&#x3D;cv2.RETR_TREE：提取轮廓后，输出轮廓信息的组织形式。</p>
+<p>method&#x3D;cv2.CHAIN_APPROX_SIMPLE：指定轮廓的近似办法</p>
+<p>（2）轮廓检索方式 mode：</p>
+<p>cv2.RETR_EXTERNAL只检测外轮廓</p>
+<p>cv2.RETR_LIST检测的轮廓不建立等级关系</p>
+<p>cv2.RETR_CCOMP建立两个等级的轮廓，上面一层为外边界，里面一层为内孔的边界信息</p>
+<p>cv2.RETR_TREE建立一个等级树结构的轮廓</p>
+<p><strong>主要影响的是提取轮廓及轮廓间关系。</strong></p>
+<p>（3）轮廓的近似办法 method：</p>
+<p>cv2.CHAIN_APPROX_NONE：存储所有的轮廓点，相邻的两个点的像素位置差不超过1，即max(abs(x1-x2)，abs(y2-y1))&#x3D;&#x3D;1。</p>
+<p>cv2.CHAIN_APPROX_SIMPLE：压缩水平方向，垂直方向，对角线方向的元素，只保留该方向的终点坐标，例如一个矩形轮廓只需4个点来保存轮廓信息</p>
+<p><strong>主要影响存储的轮廓点数</strong></p>
+<p>（4）输出参数：</p>
+<p>image ：可能输出与binary_image类似的二值图像。—opencv-python 4.x中已去掉该参数</p>
+<p>contours：一个列表，list中每个元素都是图像中的一个轮廓，用numpy中的ndarray表示。</p>
+<p>hierarchy：一个ndarray, 每条轮廓对应的属性。</p>
+<p>Hierarchy：</p>
+<p>第一个数：表示同一级轮廓的下个轮廓的编号，如果这一级轮廓没有下一个轮廓，一般是这一级轮廓的最后一个的时候，则为-1。</p>
+<p>第二个数：表示同一级轮廓的上个轮廓的编号，如果这一级轮廓没有上一个轮廓，一般是这一级轮廓的第一个的时候，则为-1。</p>
+<p>第三个数：表示该轮廓包含的下一级轮廓的第一个的编号，假如没有，则为-1。</p>
+<p>第四个数： 表示该轮廓的上一级轮廓的编号，假如没有上一级，则为-1。</p>
+<p><strong>5.图像矩</strong></p>
+<p>图像矩(Image moments)是指图像的某些<em>特定像素</em>灰度的加权平均值（矩），或者是图像具有类似功能或意义的属性。</p>
+<p>图像矩通常用来描述<strong>分割后的图像对象</strong>。可以通过图像的矩来<strong>获得图像的部分性质</strong>，包括面积(或总体亮度)，以及有关几何中心和方向的信息 。</p>
+<p>将图像看成一个平板，每个像素点的值看成是该处的密度，对某点求<strong>期望</strong>就是该图像在该点处的<strong>矩</strong>。一般<strong>图像矩指原点矩</strong>。零阶矩表示一团像素的像素值之和，一阶矩表示横坐标和对应像素值的乘积和纵坐标和对应像素值的乘积，一阶矩和零点矩可以计算某个形状的<strong>重心</strong>，二阶矩可以计算形状的<strong>方向</strong>。</p>
+<h3 id="1-5-3-二维码识别"><a href="#1-5-3-二维码识别" class="headerlink" title="1.5.3 二维码识别"></a>1.5.3 二维码识别</h3><p>二维码又称二维条形码，常见的二维码类型有二维码与条形码。</p>
+<p>二维码（QRcode）与条形码（Bar Code）都是将特定的几何图形按照<strong>一定的编码规则</strong>在平面上分布的<strong>记录数据信息</strong>的黑白相间的符号图像。</p>
+<p>信息表达方式的差异：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625140645654-1719295609258-1.png"
+                      alt="image 20240625140645654 1719295609258 1"
+                ></p>
+<p>结构上的差异：</p>
+<p>一维条形码的前端和末端有起始符和终止符，配合上固定的高度完成光电扫描设备对其位置的确定。</p>
+<p>二维码位置的确定是利用处在边缘位置的定位矩形，可以方便的利用透视变换从而达到更快速更准确的定位和识别。</p>
+<ul>
+<li><strong>代码编制：</strong></li>
+</ul>
+<p>其思想是将构成计算机内部逻辑的<strong>“0”“1”比特流</strong>映射成黑白相间的几何形体，这些几何形体按照一定的规律在二维平面上分布就可以通过图像输入设备或者光电扫描设别自动识读以实现信息的自动处理。</p>
+<ul>
+<li><strong>二维码识别核心库的导入：</strong></li>
+</ul>
+<p><strong>ZBar：</strong></p>
+<p>检测和解码不同类型的条形码和二维码的推荐库</p>
+<p>安装命令:  sudo apt-get install libzbar0</p>
+<p><strong>pyzbar：</strong></p>
+<p>python使用的第三方模块</p>
+<p>安装命令：sudo pip install zbar</p>
+<ul>
+<li><strong>视频流对象的创建以及预处理</strong></li>
+</ul>
+<p>首先使用imutils.video库中的VideoStream<strong>唤醒摄像头并创建视频流对象</strong>，使用usb插口连接单个摄像头模组默认的src为0</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;[INFO] starting video stream...&quot;)</span><br><span class="line"></span><br><span class="line">vs = VideoStream(src=0).start()</span><br><span class="line"></span><br><span class="line">time.sleep(2.0)</span><br></pre></td></tr></table></figure></div>
+
+<p>接下来使用resize方法对视频流中的<strong>每一帧进行裁剪的预处理</strong>，一般我们把每一帧的大小限定在（400×300）px以内</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">frame = vs.read()</span><br><span class="line"></span><br><span class="line">frame = imutils.resize(frame , width=400)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<ul>
+<li><strong>pyzbar的核心函数decode（）</strong></li>
+</ul>
+<p><strong>decode函数</strong>能对视频流进行<strong>识别处理</strong>，返回一组具有识别信息属性的对象</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">barcodes = pyzbar.decode(frame)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>rect属性</strong>：记录了识别到的条形码或二维码在<strong>对应帧中的位置信息</strong>。对于QR码是左上角像素点的横纵坐标，以及QR码边界点的长度和高度。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x,y,w,h) = barcode.rect</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>type属性</strong>：返回值是ZBar能够读取的条码的编码类型。</p>
+<p><strong>data属性</strong>：返回值是嵌入在检测到的符号内的数据。通常是字母数字，但其他类型也有效，可以指定其编码类型。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barcodeData = barcode.data.decode(&quot;utf-8&quot;)</span><br><span class="line"></span><br><span class="line">barcodeType = barcode.type</span><br></pre></td></tr></table></figure></div>
+
+
+
+<ul>
+<li><p><strong>使用cv2的基本操作对识别结果进行可视化处理</strong></p>
+<ul>
+<li><p><strong>框选二维码所在的位置</strong></p>
+<p>利用<strong>rectangle函数</strong>配合rect属性在对应位置画出矩形</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（x,y,w,h）=barcode.rect</span><br><span class="line"></span><br><span class="line">cv2.rectangle(frame, (x,y) , (x+w,y+h) , (0 ,0 ,255) ,2)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>文本信息的展示</strong></p>
+<p>利用<strong>putText函数</strong>将data属性和type属性以文本的形式在合适位置处展示出来</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625144638108-1719298000606-3.png"
+                      alt="image 20240625144638108 1719298000606 3"
+                ></p>
+</li>
+</ul>
+</li>
+<li><p><strong>辅助功能的实现</strong></p>
+<ul>
+<li><p><strong>使用argparse库制作命令函接口：</strong></p>
+<p>利用<strong>ArgumentParser</strong>返回的对象的add_argument方法添加命令行选项</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625144724207-1719298046168-5.png"
+                      alt="image 20240625144724207 1719298046168 5"
+                ></p>
+</li>
+<li><p><strong>历史识别结果的记录：</strong></p>
+<p>利用<strong>write函数</strong>将识别到二维码的时刻以及二维内部存储的信息写入到csv文件中</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5-4-人脸检测的基础知识和重点函数"><a href="#1-5-4-人脸检测的基础知识和重点函数" class="headerlink" title="1.5.4 人脸检测的基础知识和重点函数"></a>1.5.4 人脸检测的基础知识和重点函数</h3><p><strong>1. 人脸检测</strong></p>
+<p>人脸检测：指对于任意一幅给定的图像&#x2F;视频帧，采用一定的策略对其进行搜索以确定其中是否含有人脸，如果是则返回一脸的位置、大小和姿态。（有没有人脸）</p>
+<p>人脸识别：基于人的脸部特征信息进行身份识别的一种生物识别技术。（是谁的脸）、</p>
+<p><strong>2.Haar特征分类器</strong></p>
+<p>以Haar特征分类器为基础的对象检测技术是一种非常有效的对象检测技术。它是基于机器学习的，使用大量的<strong>正负样本</strong>训练得到分类器。</p>
+<p>Haar分类器 &#x3D; Haar-like特征 + 积分图⽅法 + AdaBoost + 级联</p>
+<ul>
+<li>Haar分类器算法的要点如下：</li>
+</ul>
+<p>①　使⽤Haar-like特征做检测。</p>
+<p>②　使⽤积分图（Integral Image）对Haar-like特征求值进行加速。</p>
+<p>③　使⽤AdaBoost算法训练区分⼈脸和非人脸的强分类器。</p>
+<p>④　使⽤筛选式级联把强分类器级联到⼀起，提高准确率。</p>
+<p>OpenCv中，Haar特征分类器就是一个XML文件，是opencv官⽅训练好的检测器，可以直接调⽤。</p>
+<ul>
+<li>Haar特征分类器存放目录：</li>
+</ul>
+<p>OpenCV安装目录中的.\opencv\sources\data\ haarcascades目录下。</p>
+<p><strong>xml中存放的是训练后的特征池</strong>，特征size大小根据训练时的参数而定，检测的时候可以简单理解为就是将每个固定size特征（检测窗口）与输入图像的同样大小区域<strong>比较</strong>，如果匹配那么就记录这个矩形区域的位置，然后<strong>滑动窗口</strong>，检测图像的另一个区域，重复操作。</p>
+<ul>
+<li>haar分类器加载</li>
+</ul>
+<p>加载分类器：需要将分类器.xml文件复制到所建项目的可运行文件夹内</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625154508529-1719301510579-27.png"
+                      alt="image 20240625154508529 1719301510579 27"
+                ></p>
+<p>CascadeClassifier为OpenCV中用来做目标检测的<strong>级联分类器</strong>的一个类。</p>
+<p>该类中封装的<strong>目标检测机制</strong>，简而言之是<strong>滑动窗口机制+级联分类器</strong>的方式。</p>
+<p>在使用这个检测时，需要传入对应的模型文件。</p>
+<p><strong>3.detectMultiScale( )函数</strong></p>
+<ul>
+<li><p><strong>当用训练好的模型去检测图像时,会用detectMultiScale()函数来对图像进行多尺度检测。</strong></p>
+</li>
+<li><p><strong>detectMultiScale()函数检测出图片中的所有人脸,并用vector类型保存各个人脸的位置和大小,用矩形Rect类表示。</strong></p>
+</li>
+<li><p><strong>该函数由分类器的对象进行调用。</strong></p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625154929455-1719301771434-29.png"
+                      alt="image 20240625154929455 1719301771434 29"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625154937744-1719301779724-31.png"
+                      alt="image 20240625154937744 1719301779724 31"
+                ></p>
+<ul>
+<li><p><strong>detectMultiScale( )参数定义</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625155148025.png"
+                      alt="image 20240625155148025"
+                ></p>
+<p>1.const Mat&amp; image：输入图像</p>
+<p>2.vector&amp; objects：输出的矩形向量组</p>
+<p>3.double scaleFactor&#x3D;1.1：这个是每次缩小图像的比例，默认是1.1</p>
+<p>4.minNeighbors&#x3D;3：匹配成功所需要的周围矩形框的数目，默认值是3，即每一个目标至少要被检测到3次才算</p>
+<p>是真的目标。</p>
+<p>5.flags&#x3D;0：可以取如下这些值：</p>
+<p>CASCADE_DO_CANNY_PRUNING&#x3D;1, 利用canny边缘检测来排除一些边缘很少或者很多的图像区域</p>
+<p>CASCADE_SCALE_IMAGE&#x3D;2, 正常比例检测</p>
+<p>CASCADE_FIND_BIGGEST_OBJECT&#x3D;4, 只检测最大的物体</p>
+<p>CASCADE_DO_ROUGH_SEARCH&#x3D;8 初略的检测</p>
+<p>6.minObjectSize maxObjectSize：匹配物体的大小范围</p>
+</li>
+</ul>
+<p>由于输入的图像中<strong>特征大小不定</strong>，比如在输入图像中眼睛是50x50的区域，而训练时的是25x25，那么只有当输入图像缩小到一半的时候，才能匹配上，所以这里还有一个逐步缩小图像，也就是<strong>制作图像金字塔的流程</strong>。</p>
+<p><strong>缩小因子</strong>会根据原图片按金字塔模型等比例缩小，然后在缩小后的图片上继续检测人脸。</p>
+<p>灰度图不但保存原色彩图的特征，而且减少运算量，加快检测速度。</p>
+<p><strong>4.人脸检测流程</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625155651713-1719302214458-33.png"
+                      alt="image 20240625155651713 1719302214458 33"
+                ></p>
+<h3 id="1-5-5-openCV形态学处理方法"><a href="#1-5-5-openCV形态学处理方法" class="headerlink" title="1.5.5 openCV形态学处理方法"></a>1.5.5 openCV形态学处理方法</h3><p>主要用于<em><strong>从图像中提取对表达和描绘区域形状有意义的图像分量</strong></em>，使后续的识别工作能够抓住目标对象最为本质的形状特征，如边界和连通区域等。</p>
+<p><strong>形态学的基本思想是利用一种特殊的结构元来测量或提取输入图像中相应的形状或特征，以便进一步进行图像分析和目标识别。</strong></p>
+<p>形态学处理主要<strong>从图像内提取分量信息</strong>，该分量信息通常对于表达和描绘图像的形状具有重要意义，通常是图像理解时所使用的最本质的形状特征。</p>
+<p><strong>腐蚀 （erode）</strong>（morphologyEx – MORPH_ERODE）</p>
+<p><strong>膨胀 （dilate）</strong>（morphologyEx – MORPH_DILATE）</p>
+<p>开运算 （morphologyEx – MORPH_OPEN）</p>
+<p>闭运算 （morphologyEx – MORPH_CLOSE）</p>
+<p>梯度运算 （morphologyEx – MORPH_GRADINET）</p>
+<p>礼帽运算 （morphologyEx – MORPH_TOPHAT）</p>
+<p>黑帽运算 （morphologyEx – MORPH_BLACKHAT）</p>
+<ul>
+<li><p>腐蚀 erode</p>
+<p>腐蚀操作是对所选区域进行“<strong>收缩</strong>”的一种操作，可以用于<strong>消除边缘和杂点</strong>。腐蚀区域的大小与结构元素的大小和形状相关。其原理是使用一个自定义的结构元素，如矩形、圆形等，在二值图像上进行<strong>类似于“滤波”的滑动操作</strong>，然后将二值图像对应的像素点与结构元素的像素进行对比，得到的<strong>交集</strong>即为腐蚀后的图像像素。</p>
+<p>经过腐蚀操作，图像区域的边缘可能会变得平滑，区域的像素将会减少，相连的部分可能会断开。即使如此，<strong>各部分仍然属于同一个区域。</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625202549457-1719318352025-41.png"
+                      alt="image 20240625202549457 1719318352025 41"
+                ></p>
+</li>
+<li><p>膨胀 dilate</p>
+<p>与腐蚀相反,膨胀是对选区进行<strong>“扩大”</strong>的一种操作。其原理是使用一个自定义的结构元素，在待处理的二值图像上进行类似于“滤波”的滑动操作，然后将二值图像对应的像素点与结构元素的像素进行对比，得到的<strong>并集</strong>为膨胀后的图像像素。</p>
+<p>经过膨胀操作，图像区域的边缘可能会变得平滑，区域的像素将会增加，不相连的部分可能会连接起来，这些都与腐蚀操作正好相反。即使如此，<strong>原本不相连的区域仍然属于各自的区域，不会因为像素重叠就发生合并</strong>。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625202855296-1719318537885-43.png"
+                      alt="image 20240625202855296 1719318537885 43"
+                ></p>
+</li>
+<li><p>开运算</p>
+<p><strong>先腐蚀，后膨胀（去毛刺）</strong></p>
+<p>消除图像上细小的噪声，并平滑物体的边界</p>
+<p>去除孤立的、细小的点，平滑毛糙的边缘线，同时原区域面积也不会有明显的改变，类似于一种“去毛刺”的效果。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625151412557-1719299654694-13.png"
+                      alt="image 20240625151412557 1719299654694 13"
+                ></p>
+</li>
+<li><p>闭运算</p>
+<p><strong>先膨胀，后腐蚀（填空隙）</strong></p>
+<p>填充物体内细小的空洞，并平滑物体边界</p>
+<p>将看起来很接近的元素，如区域内部的空洞或外部孤立的点连接成一体，区域的外观和面积也不会有明显的改变。类似于“填空隙”的效果。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://postimage.me/images/2024/07/05/image-20240625151512265-1719299714979-15.png"
+                      alt="image 20240625151512265 1719299714979 15"
+                ></p>
+</li>
+</ul>
+<h3 id="1-5-6-图像掩模概念"><a href="#1-5-6-图像掩模概念" class="headerlink" title="1.5.6 图像掩模概念"></a>1.5.6 图像掩模概念</h3><p><strong>掩膜（mask）</strong></p>
+<p>用选定的图像、图形或物体，对处理的图像（全部或局部）进行遮挡，来控制图像处理的区域或处理过程。用于覆盖的特定图像或物体称为掩模或模板。光学图像处理中,掩模可以是胶片、滤光片等。数字图像处理中,掩模为二维矩阵数组,有时也用多值图像。</p>
+<p>掩膜就是两幅图像之间进行的各种位运算操作。</p>
+<p>掩膜的用法如下：</p>
+<p>1） <strong>提取感兴趣区</strong>：用预先制作的感兴趣区掩膜与待处理图像相乘，得到感兴趣区图像，感兴趣区内图像值保持不变，而区外图像值都为0；</p>
+<p>2） <strong>屏蔽作用</strong>：用掩膜对图像上某些区域作屏蔽，使其不参加处理或不参加处理参数的计算，或仅对屏蔽区作处理或统计；</p>
+<p>3）<strong>结构特征提取</strong>：用相似性变量或图像匹配方法检测和提取图像中与掩膜相似的结构特征；</p>
+<p>4）<strong>特殊形状图像的制作</strong>。</p>
+<h3 id="1-5-7-基本、键盘等待输入函数、色彩空间范围、OpenCV视频参数修改"><a href="#1-5-7-基本、键盘等待输入函数、色彩空间范围、OpenCV视频参数修改" class="headerlink" title="1.5.7 基本、键盘等待输入函数、色彩空间范围、OpenCV视频参数修改"></a>1.5.7 基本、键盘等待输入函数、色彩空间范围、OpenCV视频参数修改</h3>
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 电子技术实习期末复习</li>
+        <li><strong>Author:</strong> Volcano</li>
+        <li><strong>Created at
+                :</strong> 2024-07-05 15:37:22</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-07-05 15:47:47
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://volcano-can.space/2024/07/05/电子技术实习期末复习/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/ustb/">#ustb</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E8%AF%BE%E7%A8%8B%E6%9C%9F%E6%9C%AB/">#课程期末</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/07/05/test/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">test</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">电子技术实习期末复习</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0"><span class="nav-text">树莓派期末复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E6%8E%8C%E6%8F%A1%E6%A0%91%E8%8E%93%E6%B4%BE%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84%E3%80%81GPIO%E3%80%81PWM%E3%80%81I2C%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E3%80%82PWM%E6%A6%82%E5%BF%B5%E5%92%8C%E8%B0%83%E5%88%B6%EF%BC%88LED%E7%81%AF%E3%80%81%E6%97%A0%E6%BA%90%E8%9C%82%E9%B8%A3%E5%99%A8%EF%BC%89"><span class="nav-text">1.1掌握树莓派硬件结构、GPIO、PWM、I2C的基本知识。PWM概念和调制（LED灯、无源蜂鸣器）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E6%A0%91%E8%8E%93%E6%B4%BE%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-text">1.1.1 树莓派硬件结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-GPIO"><span class="nav-text">1.1.2 GPIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-PWM%E6%A6%82%E5%BF%B5%E5%92%8C%E8%B0%83%E5%88%B6%EF%BC%88LED%E7%81%AF%E3%80%81%E6%97%A0%E6%BA%90%E8%9C%82%E9%B8%A3%E5%99%A8%EF%BC%89"><span class="nav-text">1.1.3 PWM概念和调制（LED灯、无源蜂鸣器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-I2C"><span class="nav-text">1.1.4 I2C</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%EF%BC%9A%E5%A6%82%E5%88%87%E6%8D%A2%E5%88%B0%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%EF%BC%8C%E8%BF%9B%E5%85%A5%E6%96%87%E4%BB%B6%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%8C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%EF%BC%8C%E9%87%8D%E5%90%AF%E3%80%81%E5%85%B3%E6%9C%BA%E7%AD%89%E3%80%82"><span class="nav-text">1.2 树莓派系统配置及远程登录的方法，树莓派系统实验过程中遇到的一些常见命令：如切换到用户目录，进入文件编辑器，安装软件，重启、关机等。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E5%8F%8A%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">1.2.1树莓派系统配置及远程登录的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-text">1.2.2 常见命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E6%8E%8C%E6%8F%A1%E5%8F%8C%E8%89%B2LED%E5%92%8C%E4%B8%89%E8%89%B2LED%E7%9A%84%E7%BC%96%E7%A8%8B%E5%92%8C%E6%8E%A5%E7%BA%BF%E6%96%B9%E5%BC%8F%EF%BC%8C%E6%8E%8C%E6%8F%A1%E4%BC%A0%E6%84%9F%E5%99%A8%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-text">1.3 掌握双色LED和三色LED的编程和接线方式，掌握传感器基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-%E5%8F%8C%E8%89%B2LED%E7%81%AF"><span class="nav-text">1.3.1 双色LED灯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E4%B8%89%E8%89%B2LED%E7%81%AF"><span class="nav-text">1.3.2 三色LED灯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-%E4%BC%A0%E6%84%9F%E5%99%A8%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-text">1.3.3 传感器基本知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E6%8E%8C%E6%8F%A1PCF8591%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E3%80%81%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E5%8F%8A%E7%AE%A1%E8%84%9A%E5%8A%9F%E8%83%BD%E7%AD%89"><span class="nav-text">1.4 掌握PCF8591器件的基本知识、通信原理及管脚功能等</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-A-D%E6%A8%A1%E6%95%B0%E8%BD%AC%E6%8D%A2"><span class="nav-text">1.4.1 A&#x2F;D模数转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-IIC%E6%80%BB%E7%BA%BF%EF%BC%88%E5%8F%8C%E5%90%91%E4%BA%8C%E7%BA%BF%E5%88%B6%E5%90%8C%E6%AD%A5%E4%B8%B2%E8%A1%8C%E6%80%BB%E7%BA%BF%EF%BC%89"><span class="nav-text">1.4.2 IIC总线（双向二线制同步串行总线）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-PCF8591"><span class="nav-text">1.4.3 PCF8591</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-OPENCV"><span class="nav-text">1.5 OPENCV</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-%E6%8E%8C%E6%8F%A1Opencv%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8"><span class="nav-text">1.5.1 掌握Opencv基础应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-OpenCV%E9%A2%9C%E8%89%B2%E8%AF%86%E5%88%AB"><span class="nav-text">1.5.1 OpenCV颜色识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-%E7%89%A9%E4%BD%93%E4%BD%8D%E7%BD%AE%E9%A2%9C%E8%89%B2%E8%AF%86%E5%88%AB%E6%B5%81%E7%A8%8B"><span class="nav-text">1.5.2 物体位置颜色识别流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-1-%E7%89%A9%E4%BD%93%E4%BD%8D%E7%BD%AE%E6%A3%80%E6%B5%8B"><span class="nav-text">1.5.2.1 物体位置检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-2-%E5%8F%AF%E9%80%89%E9%A2%9C%E8%89%B2%E7%90%83%E7%8A%B6%E7%89%A9%E4%BD%93%E8%BF%BD%E8%B8%AA"><span class="nav-text">1.5.2.2 可选颜色球状物体追踪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-3-%E9%A2%9C%E8%89%B2%E7%89%A9%E4%BD%93%E8%BF%BD%E8%B8%AA"><span class="nav-text">1.5.2.3 颜色物体追踪</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-3-%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB"><span class="nav-text">1.5.3 二维码识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-4-%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E9%87%8D%E7%82%B9%E5%87%BD%E6%95%B0"><span class="nav-text">1.5.4 人脸检测的基础知识和重点函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-5-openCV%E5%BD%A2%E6%80%81%E5%AD%A6%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-text">1.5.5 openCV形态学处理方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-6-%E5%9B%BE%E5%83%8F%E6%8E%A9%E6%A8%A1%E6%A6%82%E5%BF%B5"><span class="nav-text">1.5.6 图像掩模概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-7-%E5%9F%BA%E6%9C%AC%E3%80%81%E9%94%AE%E7%9B%98%E7%AD%89%E5%BE%85%E8%BE%93%E5%85%A5%E5%87%BD%E6%95%B0%E3%80%81%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%E8%8C%83%E5%9B%B4%E3%80%81OpenCV%E8%A7%86%E9%A2%91%E5%8F%82%E6%95%B0%E4%BF%AE%E6%94%B9"><span class="nav-text">1.5.7 基本、键盘等待输入函数、色彩空间范围、OpenCV视频参数修改</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">天天开心</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2024</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-wand-sparkles fa-bounce" style="--fa-bounce-start-scale-x: 1;--fa-bounce-start-scale-y: 1;--fa-bounce-jump-scale-x: 1;--fa-bounce-jump-scale-y: 1;--fa-bounce-land-scale-x: 1;--fa-bounce-land-scale-y: 1;--fa-bounce-rebound: 0; color: #336699""></i>&nbsp;&nbsp;<a href="/">Volcano</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        2 posts in total
+                    </span>
+                    
+                        <span>
+                            13.9k words in total
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.3</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
